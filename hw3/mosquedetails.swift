@@ -14,69 +14,57 @@ struct mosquedetails: View {
         ZStack{
             Color.black
                 .edgesIgnoringSafeArea(.all)
-           
-                
+            
             VStack{
-                
-                Image(mo.names)
-                    .resizable()
-                    //.scaledToFit()
-                    .frame(width:400,height:350)
-                    .edgesIgnoringSafeArea(.all)
-                    .offset(y:50)
+                ZStack {
+                    Rectangle().foregroundColor(.clear).frame(maxWidth:.infinity)
+                        .background( Image(mo.names)
+                            .resizable()
+                            .edgesIgnoringSafeArea(.all))
+                    Text(mo.names)
+                        .font(.system(size: 50))
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
                     
-                Text(mo.names)
-                    .font(.system(size: 50))
-                               .font(.largeTitle)
-                              .foregroundColor(.white)
-                               .offset(y:-200)
-                    //.offset(y:0)
-                
-                
-                ScrollView(.horizontal){
-                    HStack(spacing:30){
-                        ForEach(mo.sheikh , id: \.self){ mo in
-                            Image(mo)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width:120,height: 200)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white,lineWidth: 8))}
+                    ScrollView(.horizontal){
+                        HStack(spacing:30){
+                            ForEach(mo.sheikh , id: \.self){ mo in
+                                Image(mo)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width:120,height: 200)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(Color.white,lineWidth: 8))
+                                
+                            }
+                            
+                        }
                         
-                    
-                    } }.offset(y:-200)
-
-                  ScrollView(.vertical){
-                HStack(spacing:100){
-                  
-                    VStack(spacing:20){
-                        ForEach(mo.time,id:\.self){ mo in
-                        Text(mo)
-                            .font(.callout)
-                            .foregroundColor(.white)
-                        
-                        }.offset(y:-200)}
+                    }.offset(y:150)
+                }
+                ScrollView(.vertical){
+                    HStack(spacing:100){
                         VStack(spacing:20){
-                            
-                            
-                ForEach(mo.prayer,id:\.self){ mo in
+                            ForEach(mo.time,id:\.self){ mo in
                                 Text(mo)
                                     .font(.callout)
                                     .foregroundColor(.white)
                                 
-                                
                             }
                             
-                    }}.offset(y:-200)
+                        }
+                        VStack(spacing:20){
+                            ForEach(mo.prayer,id:\.self){ mo in
+                                Text(mo)
+                                    .font(.callout)
+                                    .foregroundColor(.white)
+                            }
+                            
+                        }
+                        
                     }
-                    
-                    
-                    
-                    
-                    
-                
-                
-                
+                }
+                .offset(y:80)
             }
         }
     }
@@ -91,3 +79,4 @@ struct mosquedetails: View {
     }
     
 }
+

@@ -11,9 +11,12 @@ import SwiftUI
 struct ContentView: View {
     var mo : mousque
     var body: some View {
+      
+       
+          
         NavigationView{
            
-            Color.black
+        
                 
               
               List{
@@ -22,7 +25,15 @@ struct ContentView: View {
                       
                     }
        
-                }}}.navigationBarTitle("مساجد الكويت")}}
+                }}
+                .navigationBarTitle("مساجد الكويت")//.foregroundColor(.white)
+        }
+            
+
+        
+        
+    }    }
+    
 
 
 struct ContentView_Previews: PreviewProvider {
@@ -30,9 +41,20 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(mo:mousque(names: "المشعان", sheikh: [
             "الكندري",
             "العفاسي",])
-        )   
+        )
+        .previewDisplayName("List Of Movies View iPhone SE (2nd generation)")
+        .environment(\.colorScheme, .dark)
+       // .environment(\.layoutDirection, .rightToLeft)
+       // .environment(\.sizeCategory,.accessibilityExtraExtraExtraLarge)
+
+
     }
 }
+
+
+
+
+
 struct Mousquerow: View {
        var mousque: mousque
        var body: some View {
